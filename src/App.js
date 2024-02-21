@@ -1,25 +1,95 @@
-import logo from './logo.svg';
-import './App.css';
+// import { SectionTitle } from '@/components'
+import Card from './components/card'
+import { useRef, useEffect, useState } from 'react'
+import { TestimonialsInfo } from './data/TestimonialsInfo'
+import chevron from './chevron.svg'
+import Header from './components/Header'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+function Testimonials() {
+
+    // ref
+    let scrolledItem = useRef(null)
+    // Max Scroll
+    let [maxScroll, setMaxScroll] = useState(0)
+
+    // Scroll Fucntionality
+    useEffect(() => {
+        setMaxScroll(scrolledItem.current.scrollWidth)
+    }, [scrolledItem])
+
+    let scroll = 0
+    const swipRight = () => {
+        scroll += window.innerWidth
+        scrolledItem.current.scrollTo(scroll, 0)
+        if (scroll > maxScroll) {
+            scroll = 0
+            scrolledItem.current.scrollTo(scroll, 0)
+        }
+    }
+    const swipLeft = () => {
+        scroll -= window.innerWidth
+        scrolledItem.current.scrollTo(scroll, 0)
+        if (scroll < 0) scroll = 0
+    }
+
+    // Auto scrolling
+    const seconds = 20
+    useEffect(()=>{
+      setInterval(() => {
+          if (typeof window !== 'undefined') {
+              // Code accessing window
+              scroll += window.innerWidth
+              scrolledItem.current.scrollTo(scroll, 0)
+  
+              if (scroll > maxScroll) {
+                  scroll = 0
+                  scrolledItem.current.scrollTo(scroll, 0)
+              }
+          }
+      }, seconds * 1000)
+    })
+
+    return (
+        <section
+            className={`pt-10 md:pt-20 w-full h-full overflow-hidden relative bg-bg-1`}
+            id="Testimonials"
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          {/* Header */}
+          <Header />
+
+          {/* Slider buttons */}
+            <div className="w-full absolute top-1/2">
+                <div className="md:flex md:justify-between md:px-60 z-50 hidden">
+                    <img
+                        src={chevron}
+                        alt={'Chevron'}
+                        className="rounded-full w-11 h-11 rotate-90 bg-primary-1 flex items-center justify-center text-xl shadow-sm text-white cursor-pointer z-50"
+                        onClick={() => swipLeft()}
+                    />
+                    <img
+                        src={chevron}
+                        alt={'Chevron'}
+                        className="rounded-full w-11 h-11 shadow-sm -rotate-90 bg-primary-1 flex items-center justify-center text-xl text-white cursor-pointer z-50"
+                        onClick={() => swipRight()}
+                    />
+                </div>
+            </div>
+
+            <div
+                className="flex items-center py-6 pb-20 overflow-x-auto md:overflow-x-hidden first:ml-0 snap-x snap-mandatory md:snap-none scroll-smooth testimonial  z-20"
+                ref={scrolledItem}
+            >
+                {TestimonialsInfo.map((a) => (
+                    <Card
+                        key={a.testimonial}
+                        testimonial={a.testimonial}
+                        companyName={a.company}
+                        person={a.person}
+                    />
+                ))}
+            </div>
+        </section>
+    )
 }
 
-export default App;
+export default Testimonials
