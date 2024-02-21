@@ -2,6 +2,10 @@
   <h1>Testimonials Cards Slider for React</h1>
 <!--   <p><img src="demo.gif" alt="Testimonials Cards Slider Demo" style="width: 100%; max-width: 600px; margin: 20px auto; border: 1px solid #ccc; border-radius: 5px; overflow: hidden;"></p> -->
   <p>This project is a simple and elegant Testimonials Cards Slider component built using React. It provides an intuitive way to display testimonials or reviews in a slider format, enhancing the user experience on websites or applications.</p>
+
+![v1 0 0](https://github.com/ham7a7/Testimonials-Cards-Slider/assets/86884722/b45369a7-c123-456a-a25c-d9d8eb052977)
+
+  
   <h2>Features</h2>
   <ul>
     <li><strong>Responsive Design:</strong> The Testimonials Cards Slider is designed to adapt seamlessly to various screen sizes, ensuring optimal viewing experience across devices.</li>
