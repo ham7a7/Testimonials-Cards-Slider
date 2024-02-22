@@ -27,21 +27,21 @@ export const CardsSlider = ({ scrolledItem }) => {
   };
 
   // Auto scrolling
-  const seconds = 2;
-  // useEffect(() => {
+
+  // Auto Scrolling delay
+  const SECONDS = 6;
   setInterval(() => {
     if (typeof window !== "undefined") {
       // Code accessing window
       scroll += window.innerWidth;
       scrolledItem.current.scrollTo(scroll, 0);
 
-      if (scroll > maxScroll) {
+      if (scroll >= maxScroll) {
         scroll = 0;
         scrolledItem.current.scrollTo(scroll, 0);
       }
     }
-  }, seconds * 1000);
-  // });
+  }, SECONDS * 1000);
 
   return (
     <div className="w-full absolute top-1/2">

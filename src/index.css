@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html {
-  font-family: 'Readex pro', sans-serif;
+  font-family: "Readex pro", sans-serif;
   scroll-behavior: smooth;
   box-sizing: border-box;
   @apply bg-white;
@@ -11,10 +11,61 @@ html {
 
 /* Every element style */
 * {
-  font-family: 'Readex pro', sans-serif;
+  font-family: "Readex pro", sans-serif;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   outline: 0;
   border: 0;
+}
+
+/* Scroll Bar customization */
+::-webkit-scrollbar {
+  width: 0.62rem;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-bg-2;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-primary-1;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary-2;
+}
+
+/* Selection apperanse */
+::selection {
+  @apply bg-accent-2;
+  @apply text-white;
+}
+
+/* Experiences Section Scroll Bar customization */
+.testimonial::-webkit-scrollbar {
+  width: 0rem;
+  height: 0.4rem;
+}
+.testimonial::-webkit-scrollbar-track {
+  @apply bg-bg-2;
+  margin: 0 9rem;
+  border-radius: 5px;
+}
+/* Handle */
+.testimonial::-webkit-scrollbar-thumb {
+  @apply bg-primary-1;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+.testimonial::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary-2;
+}
+
+.testimonial::-webkit-scrollbar {
+  width: 0rem;
+  height: 0.3rem;
 }

@@ -9,7 +9,7 @@ function TestimonialsSlider({ TestimonialsData }) {
 
   return (
     <section
-      className={`pt-10 md:pt-20 w-full h-full overflow-hidden relative bg-bg-1`}
+      className={`pt-10 md:pt-20 w-full h-screen overflow-hidden relative bg-bg-1`}
       id="Testimonials"
     >
       {/* Header */}
@@ -19,7 +19,7 @@ function TestimonialsSlider({ TestimonialsData }) {
       <CardsSlider scrolledItem={scrolledItem} />
 
       <div
-        className="flex items-center py-6 pb-20 overflow-x-auto md:overflow-x-hidden first:ml-0 snap-x snap-mandatory md:snap-none scroll-smooth testimonial  z-20"
+        className="flex items-center py-6 pb-20 overflow-x-auto  md:overflow-x-hidden first:ml-0 snap-x snap-mandatory md:snap-none scroll-smooth testimonial  z-10"
         ref={scrolledItem}
       >
         {TestimonialsData.map((a) => (
