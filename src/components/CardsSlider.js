@@ -5,13 +5,13 @@ import chevron from "./../chevron.svg";
 export const CardsSlider = ({ scrolledItem }) => {
   // Max Scroll
   let [maxScroll, setMaxScroll] = useState(0);
+  let scroll = 0;
 
   // Scroll Fucntionality
   useEffect(() => {
     setMaxScroll(scrolledItem.current.scrollWidth);
   }, [scrolledItem]);
 
-  let scroll = 0;
   const swipRight = () => {
     scroll += window.innerWidth;
     scrolledItem.current.scrollTo(scroll, 0);
@@ -27,21 +27,21 @@ export const CardsSlider = ({ scrolledItem }) => {
   };
 
   // Auto scrolling
-  const seconds = 20;
-  useEffect(() => {
-    setInterval(() => {
-      if (typeof window !== "undefined") {
-        // Code accessing window
-        scroll += window.innerWidth;
-        scrolledItem.current.scrollTo(scroll, 0);
+  const seconds = 2;
+  // useEffect(() => {
+  setInterval(() => {
+    if (typeof window !== "undefined") {
+      // Code accessing window
+      scroll += window.innerWidth;
+      scrolledItem.current.scrollTo(scroll, 0);
 
-        if (scroll > maxScroll) {
-          scroll = 0;
-          scrolledItem.current.scrollTo(scroll, 0);
-        }
+      if (scroll > maxScroll) {
+        scroll = 0;
+        scrolledItem.current.scrollTo(scroll, 0);
       }
-    }, seconds * 1000);
-  });
+    }
+  }, seconds * 1000);
+  // });
 
   return (
     <div className="w-full absolute top-1/2">
