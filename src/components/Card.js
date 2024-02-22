@@ -1,5 +1,6 @@
 import React from "react";
-function Card({ name, testimonial, company, photo }) {
+
+const Card = ({ name, testimonial, company, photo }) => {
   return (
     <div className={`w-[100%] flex justify-center shrink-0`}>
       <div className="w-[25rem] h-[25rem] flex flex-col justify-between bg-white p-4 shadow-sm relative mx-5 rounded-[15px] transition-all overscroll-contain snap-center">
@@ -14,7 +15,7 @@ function Card({ name, testimonial, company, photo }) {
         <div className="flex flex-row items-center basis-[20%] mt-5">
           <img
             src={photo}
-            alt="testimonial photo"
+            alt="testimonial"
             className="w-12 h-12 rounded-full object-cover mr-5  border-[1px] border-primary-2 border-solid"
           />
           <div className="flex flex-col">
@@ -30,13 +31,13 @@ function Card({ name, testimonial, company, photo }) {
       </div>
     </div>
   );
-}
+};
 
 export default Card;
 
 export const Qoute = ({ code, align = "text-left" }) => {
   return (
-    <div className={`w-full ${align}`}>
+    <div className={`w-full ${align} `}>
       <span className="text-primary-1 text-4xl">
         {String.fromCharCode(code)}
       </span>
